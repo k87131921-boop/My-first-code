@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Fact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .fact-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fact-text {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Fun Fact Generator</h1>
+        <div class="fact-box">
+            <p class="fact-text" id="fact">Click the button to get a random fun fact!</p>
+        </div>
+        <button onclick="getRandomFact()">Get New Fact</button>
+    </div>
+
+    <script>
+        const funFacts = [
+            "Honey never spoils. Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible!",
+            "A group of flamingos is called a 'flamboyance.'",
+            "Bananas are berries, but strawberries aren't!",
+            "Octopuses have three hearts and blue blood.",
+            "A single bolt of lightning contains enough energy to toast 100,000 slices of bread.",
+            "Cleopatra lived closer to the invention of the iPhone than to the building of the Great Pyramid.",
+            "Sharks have been around longer than dinosaurs.",
+            "Honey bees can recognize human faces.",
+            "The Great Wall of China isn't visible from space with the naked eye.",
+            "A day on Venus is longer than a year on Venus.",
+            "Koalas have fingerprints almost identical to humans.",
+            "Your nose can remember 50,000 different scents.",
+            "The Eiffel Tower grows taller in summer due to thermal expansion.",
+            "Sloths only defecate once a week.",
+            "A group of crows is called a 'murder.'",
+            "Wombat poop is cubic-shaped.",
+            "The shortest war in history lasted only 38 to 45 minutes.",
+            "Scotland's national animal is a unicorn.",
+            "Cats have a third eyelid called the nictitating membrane.",
+            "Lemons contain more sugar than strawberries."
+        ];
+
+        function getRandomFact() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            const factElement = document.getElementById('fact');
+            
+            // Add fade effect
+            factElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                factElement.textContent = funFacts[randomIndex];
+                factElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Initialize with a random fact on page load
+        window.addEventListener('load', getRandomFact);
+
+        // Add smooth transition
+        const style = document.createElement('style');
+        style.textContent = '.fact-text { transition: opacity 0.3s ease-in-out; }';
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
